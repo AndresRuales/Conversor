@@ -1,35 +1,86 @@
 package RU.ConversorMoneda;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class TestMain {
-	
 	/*- Convertir de la moneda de tu país a Dólar
     - Convertir de la moneda de tu país  a Euros
     - Convertir de la moneda de tu país  a Libras Esterlinas
     - Convertir de la moneda de tu país  a Yen Japonés
     - Convertir de la moneda de tu país  a Won sul-coreano
+    
+    - Convertir de Dólar a la moneda de tu país
+        - Convertir de Euros a la moneda de tu país
+        - Convertir de Libras Esterlinas a la moneda de tu país
+        - Convertir de Yen Japonés a la moneda de tu país
+        - Convertir de Won sul-coreano a la moneda de tu país
 	*/
 	
 	public static void main(String[] args) {
 		
 		//BORRADOR DE COMO FUNCIONARÍA NUESTRO CONVERSOR
+		boolean reiniciar = true;
+		//CICLO INFINITO PARA REPETIR EL CODIGO HASTA QUE LE USUARIO LO DECIDA CERRAR
+		while (reiniciar) {
+			try {
+				String[] opcionesConversor = {"De COP a Dolar","De COP a Euros"
+						,"De COP a Libras Esterlinas","De COP a Yen Japonés","De COP a Won sul-coreano"};
+				
+				String[] opcionesMonedas = {"Conversor de Moneda","Conversor de Temperatura"
+						,"Relación de velocidades (Engranajes)"};
+				
+													//Devuelve un tipo Object
+				String seleccionconvertir = (String) JOptionPane.showInputDialog(
+						null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
+						null,opcionesMonedas,opcionesMonedas[0]);	
+				if (seleccionconvertir == null) {
+					break;
+				}
+				
+				
+				String valorNumeroStr = (String)JOptionPane.showInputDialog(null,"Valor a convertir: ","0");
+				if (valorNumeroStr == null) {
+					break;
+				}
+				
+				Double numero = Double.parseDouble(valorNumeroStr);
+				COP moneda = new COP(numero);
 		
-		//Se crea objeto de tipo Scanner que guarda la moneda del usuario
-		Scanner entradaMoneda = new Scanner(System.in);
-		
-		//Solicita al usuario texto.
-		System.out.println("Ingrese el valor de la moneda a convertir: ");
-		Float moneda = entradaMoneda.nextFloat();
-		
-		System.out.println("Digito de moneda ingresada: "+moneda);
+				//SELECCION CONVERSOR DE MONEDA:	
+				if(seleccionconvertir == "Conversor de Moneda") {
+					
+					String seleccionModena = (String) JOptionPane.showInputDialog(
+							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
+							null,opcionesConversor,opcionesConversor[0]);
+					
+					if (seleccionModena == "De COP a Dolar") {
+						
+						String conversion = String.format("%.2f", moneda.deCOPaDolar(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" Dolares");
+					}
+					
+				}
+				
+				int cerrar=JOptionPane.showConfirmDialog(null, "¿Cerrar el programa?");
+				
+				if (cerrar ==1) {
+					reiniciar=true;
+				} else if (cerrar ==2){
+					reiniciar=true;
+				}else {
+					reiniciar = false;
+				}
+				
+				
+				
+				
 
-		
-		//Se cierra el objeto moneda para  liberar los 
-			//	recursos asociados a la entrada estándar del sistema.
-		entradaMoneda.close();
-		
-		System.out.println("Fin del programa");
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "El valor no es un número, digite un número.","Error",JOptionPane.ERROR_MESSAGE);
+			}
+
+		}
+
 	}
 
 }
