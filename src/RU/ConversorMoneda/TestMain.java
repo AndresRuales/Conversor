@@ -23,16 +23,19 @@ public class TestMain {
 		//CICLO INFINITO PARA REPETIR EL CODIGO HASTA QUE LE USUARIO LO DECIDA CERRAR
 		while (reiniciar) {
 			try {
+				//Lista de tipo String con las opciones para convertir los COP a otra moneda
 				String[] opcionesConversor = {"De COP a Dolar","De COP a Euros"
 						,"De COP a Libras Esterlinas","De COP a Yen Japonés","De COP a Won sul-coreano"};
 				
+				//Lista de tipo String con las opciones para seleccionar la opcion de convertir
 				String[] opcionesMonedas = {"Conversor de Moneda","Conversor de Temperatura"
 						,"Relación de velocidades (Engranajes)"};
 				
-													//Devuelve un tipo Object
+				//Input, con lista desplegable				//Devuelve un tipo Object
 				String seleccionconvertir = (String) JOptionPane.showInputDialog(
 						null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
 						null,opcionesMonedas,opcionesMonedas[0]);	
+				//Condicional para cerrar el programa en caso de que el usuario dé click en CANCEL o X
 				if (seleccionconvertir == null) {
 					break;
 				}
@@ -42,6 +45,9 @@ public class TestMain {
 				if (valorNumeroStr == null) {
 					break;
 				}
+				
+				valorNumeroStr = valorNumeroStr.replace(",",".");
+				
 				
 				Double numero = Double.parseDouble(valorNumeroStr);
 				COP moneda = new COP(numero);
@@ -76,6 +82,7 @@ public class TestMain {
 				
 
 			}catch (Exception e) {
+				
 				JOptionPane.showMessageDialog(null, "El valor no es un número, digite un número.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 
