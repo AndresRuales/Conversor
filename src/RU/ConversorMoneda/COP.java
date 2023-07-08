@@ -9,31 +9,31 @@ public class COP extends Moneda{
 	@Override
 	public Double deCOPaDolar(Double valor) {
 		// TODO Auto-generated method stub
-		return valor/4166;
+		return valor/4195.73;
 	}
 
 	@Override
 	public Double deCOPaEuro(Double valor) {
 		// TODO Auto-generated method stub
-		return null;
+		return valor/4604.62;
 	}
 
 	@Override
 	public Double deCOPaLibras(Double valor) {
 		// TODO Auto-generated method stub
-		return null;
+		return valor/5386.68;
 	}
 
 	@Override
 	public Double deCOPaYen(Double valor) {
 		// TODO Auto-generated method stub
-		return null;
+		return valor/29.52;
 	}
 
 	@Override
 	public Double deCOPaWou(Double valor) {
 		// TODO Auto-generated method stub
-		return null;
+		return valor/3.23;
 	}
 	
 

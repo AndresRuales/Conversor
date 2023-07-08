@@ -54,18 +54,36 @@ public class TestMain {
 		
 				//SELECCION CONVERSOR DE MONEDA:	
 				if(seleccionconvertir == "Conversor de Moneda") {
-					
 					String seleccionModena = (String) JOptionPane.showInputDialog(
 							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
 							null,opcionesConversor,opcionesConversor[0]);
-					
 					if (seleccionModena == "De COP a Dolar") {
-						
 						String conversion = String.format("%.2f", moneda.deCOPaDolar(moneda.getValor()));
 						JOptionPane.showMessageDialog(null, conversion+" Dolares");
+					} else if (seleccionModena == "De COP a Euros") {
+						String conversion = String.format("%.2f", moneda.deCOPaEuro(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" Euros");
+					} else if (seleccionModena == "De COP a Libras Esterlinas") {
+						String conversion = String.format("%.2f", moneda.deCOPaLibras(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" Libras Esterlinas");
+					} else if (seleccionModena == "De COP a Yen Japonés") {
+						String conversion = String.format("%.2f", moneda.deCOPaYen(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" Yen Japonés");
+					} else if (seleccionModena == "De COP a Won sul-coreano") {
+						String conversion = String.format("%.2f", moneda.deCOPaWou(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" Won sul-coreano");
 					}
-					
 				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				int cerrar=JOptionPane.showConfirmDialog(null, "¿Cerrar el programa?");
 				
