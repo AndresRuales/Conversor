@@ -25,11 +25,16 @@ public class TestMain {
 			try {
 				//Lista de tipo String con las opciones para convertir los COP a otra moneda
 				String[] opcionesConversor = {"De COP a Dolar","De COP a Euros"
-						,"De COP a Libras Esterlinas","De COP a Yen Japonés","De COP a Won sul-coreano"};
+						,"De COP a Libras Esterlinas","De COP a Yen Japonés",
+						"De COP a Won sul-coreano","De Dolar a COP","De Euros a COP","De Libras a COP"
+						,"De Yen Japonés a COP","De Won sul-coreano a COP"};
 				
 				//Lista de tipo String con las opciones para seleccionar la opcion de convertir
 				String[] opcionesMonedas = {"Conversor de Moneda","Conversor de Temperatura"
 						,"Relación de velocidades (Engranajes)"};
+				
+				String[] opcionesTemperatura = {"De Celcius a Fahrenheit","De Celcius a Kelvin",
+						"De Fahrenheit a Celcius","De Kelvin a Celcius"};
 				
 				//Input, con lista desplegable				//Devuelve un tipo Object
 				String seleccionconvertir = (String) JOptionPane.showInputDialog(
@@ -47,13 +52,11 @@ public class TestMain {
 				}
 				
 				valorNumeroStr = valorNumeroStr.replace(",",".");
-				
-				
 				Double numero = Double.parseDouble(valorNumeroStr);
-				COP moneda = new COP(numero);
-		
+				
 				//SELECCION CONVERSOR DE MONEDA:	
 				if(seleccionconvertir == "Conversor de Moneda") {
+					COP moneda = new COP(numero);
 					String seleccionModena = (String) JOptionPane.showInputDialog(
 							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
 							null,opcionesConversor,opcionesConversor[0]);
@@ -72,10 +75,47 @@ public class TestMain {
 					} else if (seleccionModena == "De COP a Won sul-coreano") {
 						String conversion = String.format("%.2f", moneda.deCOPaWou(moneda.getValor()));
 						JOptionPane.showMessageDialog(null, conversion+" Won sul-coreano");
+					} 
+					
+					else if (seleccionModena == "De Dolar a COP") {
+						String conversion = String.format("%.2f", moneda.deDolaraCOP(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" COP");
+					} else if (seleccionModena == "De Euros a COP") {
+						String conversion = String.format("%.2f", moneda.deEuroaCOP(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" COP");
+					} else if (seleccionModena == "De Libras Esterlinas a COP") {
+						String conversion = String.format("%.2f", moneda.deLibrasaCOP(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" COP");
+					} else if (seleccionModena == "De Yen Japonés a COP") {
+						String conversion = String.format("%.2f", moneda.deYenaCOP(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" COP");
+					} else if (seleccionModena == "De Won sul-coreano a COP") {
+						String conversion = String.format("%.2f", moneda.deWouaCOP(moneda.getValor()));
+						JOptionPane.showMessageDialog(null, conversion+" COP");
 					}
 				}
 				
-				
+				//CONVERSOR DE TEMPERATURA
+				if(seleccionconvertir == "Conversor de Temperatura") {
+					Celcius magnitud = new Celcius(numero);
+					String seleccionTemperatura = (String) JOptionPane.showInputDialog(
+							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
+							null,opcionesTemperatura,opcionesTemperatura[0]);
+					
+					if(seleccionTemperatura == "De Celcius a Fahrenheit") {
+						String conversion = String.format("%.2f", magnitud.deCelciusAFahrenheit(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºF");
+					} else if (seleccionTemperatura == "De Celcius a Kelvin") {
+						String conversion = String.format("%.2f", magnitud.deCelciusAKelvin(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºK");
+					} else if (seleccionTemperatura == "De Fahrenheit a Celcius") {
+						String conversion = String.format("%.2f", magnitud.deFahrenheitACelcius(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºC");
+					} else if (seleccionTemperatura == "De Kelvin a Celcius") {
+						String conversion = String.format("%.2f", magnitud.deKelvinACelcius(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºC");
+					}
+				}
 				
 				
 				

@@ -20,6 +20,20 @@ abstract class Moneda {
 	public abstract Double deCOPaWou(Double valor);
 	
 	
+	
+	public abstract Double deDolaraCOP(Double valor);
+
+	public abstract Double deEuroaCOP(Double valor);
+	
+	public abstract Double deLibrasaCOP(Double valor);
+
+	public abstract Double deYenaCOP(Double valor);
+	
+	public abstract Double deWouaCOP(Double valor);
+	
+	
+	
+	
 	/*
 	public abstract Double deMondeaaCOP();
 */
