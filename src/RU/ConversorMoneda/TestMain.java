@@ -119,7 +119,28 @@ public class TestMain {
 				
 				
 				
-				
+				//RELACION VELOCIDADES (ENGRANAJES)
+				/*
+				if(seleccionconvertir == "Relación de velocidades (Engranajes)") {
+					Celcius dientes = new Celcius(numero);
+					String seleccionTemperatura = (String) JOptionPane.showInputDialog(
+							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
+							null,opcionesTemperatura,opcionesTemperatura[0]);
+					
+					if(seleccionTemperatura == "De Celcius a Fahrenheit") {
+						String conversion = String.format("%.2f", dientes.deCelciusAFahrenheit(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºF");
+					} else if (seleccionTemperatura == "De Celcius a Kelvin") {
+						String conversion = String.format("%.2f", dientes.deCelciusAKelvin(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºK");
+					} else if (seleccionTemperatura == "De Fahrenheit a Celcius") {
+						String conversion = String.format("%.2f", dientes.deFahrenheitACelcius(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºC");
+					} else if (seleccionTemperatura == "De Kelvin a Celcius") {
+						String conversion = String.format("%.2f", dientes.deKelvinACelcius(magnitud.getMagnitud()));
+						JOptionPane.showMessageDialog(null, conversion+" ºC");
+					}
+				}*/
 				
 				
 				
@@ -130,7 +151,7 @@ public class TestMain {
 				if (cerrar ==1) {
 					reiniciar=true;
 				} else if (cerrar ==2){
-					reiniciar=true;
+					reiniciar=false;
 				}else {
 					reiniciar = false;
 				}
