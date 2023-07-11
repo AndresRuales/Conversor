@@ -45,17 +45,24 @@ public class TestMain {
 					break;
 				}
 				
-				
+				/*
 				String valorNumeroStr = (String)JOptionPane.showInputDialog(null,"Valor a convertir: ","0");
 				if (valorNumeroStr == null) {
 					break;
 				}
 				
 				valorNumeroStr = valorNumeroStr.replace(",",".");
-				Double numero = Double.parseDouble(valorNumeroStr);
+				Double numero = Double.parseDouble(valorNumeroStr);*/
 				
 				//SELECCION CONVERSOR DE MONEDA:	
 				if(seleccionconvertir == "Conversor de Moneda") {
+					String valorNumeroStr = (String)JOptionPane.showInputDialog(null,"Valor a convertir: ","0");
+					if (valorNumeroStr == null) {
+						break;
+					}
+					valorNumeroStr = valorNumeroStr.replace(",",".");
+					Double numero = Double.parseDouble(valorNumeroStr);
+					
 					COP moneda = new COP(numero);
 					String seleccionModena = (String) JOptionPane.showInputDialog(
 							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
@@ -83,7 +90,7 @@ public class TestMain {
 					} else if (seleccionModena == "De Euros a COP") {
 						String conversion = String.format("%.2f", moneda.deEuroaCOP(moneda.getValor()));
 						JOptionPane.showMessageDialog(null, conversion+" COP");
-					} else if (seleccionModena == "De Libras Esterlinas a COP") {
+					} else if (seleccionModena == "De Libras a COP") {
 						String conversion = String.format("%.2f", moneda.deLibrasaCOP(moneda.getValor()));
 						JOptionPane.showMessageDialog(null, conversion+" COP");
 					} else if (seleccionModena == "De Yen Japonés a COP") {
@@ -97,6 +104,13 @@ public class TestMain {
 				
 				//CONVERSOR DE TEMPERATURA
 				if(seleccionconvertir == "Conversor de Temperatura") {
+					String valorNumeroStr = (String)JOptionPane.showInputDialog(null,"Valor a convertir: ","0");
+					if (valorNumeroStr == null) {
+						break;
+					}
+					valorNumeroStr = valorNumeroStr.replace(",",".");
+					Double numero = Double.parseDouble(valorNumeroStr);
+					
 					Celcius magnitud = new Celcius(numero);
 					String seleccionTemperatura = (String) JOptionPane.showInputDialog(
 							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
@@ -117,35 +131,31 @@ public class TestMain {
 					}
 				}
 				
-				
-				
 				//RELACION VELOCIDADES (ENGRANAJES)
-				/*
 				if(seleccionconvertir == "Relación de velocidades (Engranajes)") {
-					Celcius dientes = new Celcius(numero);
-					String seleccionTemperatura = (String) JOptionPane.showInputDialog(
-							null,"Seleccione la opción que requiera: ", "Lista desplegable",JOptionPane.QUESTION_MESSAGE,
-							null,opcionesTemperatura,opcionesTemperatura[0]);
 					
-					if(seleccionTemperatura == "De Celcius a Fahrenheit") {
-						String conversion = String.format("%.2f", dientes.deCelciusAFahrenheit(magnitud.getMagnitud()));
-						JOptionPane.showMessageDialog(null, conversion+" ºF");
-					} else if (seleccionTemperatura == "De Celcius a Kelvin") {
-						String conversion = String.format("%.2f", dientes.deCelciusAKelvin(magnitud.getMagnitud()));
-						JOptionPane.showMessageDialog(null, conversion+" ºK");
-					} else if (seleccionTemperatura == "De Fahrenheit a Celcius") {
-						String conversion = String.format("%.2f", dientes.deFahrenheitACelcius(magnitud.getMagnitud()));
-						JOptionPane.showMessageDialog(null, conversion+" ºC");
-					} else if (seleccionTemperatura == "De Kelvin a Celcius") {
-						String conversion = String.format("%.2f", dientes.deKelvinACelcius(magnitud.getMagnitud()));
-						JOptionPane.showMessageDialog(null, conversion+" ºC");
+					String valorDientes1 = (String)JOptionPane.showInputDialog(null,"Digite el número de dientes del \nengranaje de entrada del movimiento: ","0");
+					if (valorDientes1 == null) {
+						break;
 					}
-				}*/
-				
-				
-				
-				
-				
+					valorDientes1 = valorDientes1.replace(",",".");
+					Double numero = Double.parseDouble(valorDientes1);
+					
+					String valorDientes2 = (String)JOptionPane.showInputDialog(null,"Digite el número de dientes \ndel engranaje conducido: ","0");
+					if (valorDientes2 == null) {
+						break;
+					}
+					valorDientes2 = valorDientes2.replace(",",".");
+					Double numero2 = Double.parseDouble(valorDientes2);
+
+					Engranajes dientes1 = new Engranajes(numero);
+					Engranajes dientes2 = new Engranajes(numero2);
+
+					String relacionVelocidad = String.format("%.2f", dientes1.calculoVelocidad(dientes1.getDientes(),dientes2.getDientes()));
+					JOptionPane.showMessageDialog(null, "Mientras el engranaje motriz gira "+relacionVelocidad+" veces, \nel engranaje conducido gira 1 vez.");
+					
+				}
+
 				int cerrar=JOptionPane.showConfirmDialog(null, "¿Cerrar el programa?");
 				
 				if (cerrar ==1) {
@@ -156,13 +166,9 @@ public class TestMain {
 					reiniciar = false;
 				}
 				
-				
-				
-				
-
 			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "El valor no es un número, digite un número. \nEl programa se reiniciará.","Error",JOptionPane.ERROR_MESSAGE);
 				
-				JOptionPane.showMessageDialog(null, "El valor no es un número, digite un número.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
