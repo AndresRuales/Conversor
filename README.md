@@ -4,6 +4,8 @@ _Desafio Alura ONE Oracle Next Education, conversor de moneda que convierte el v
 
 _Conversor de temperatura de ºC en: ºF, ºK, y viceversa._
 
+_Realiza la relación de velocidades de dos engranajes, según su número de dientes, uno conductor y el otro conducido._
+
 ## Comenzando 🚀
 
 _Se ejecuta la clase TestMain._
