@@ -19,7 +19,7 @@ public class Engranajes {
 	
 	
 	public Double calculoVelocidad (Double dientes1, Double dientes2) {
-		return dientes1/dientes2;
+		return dientes2/dientes1;
 	}
 	
 	
